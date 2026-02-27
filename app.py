@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 # Load model
-model = pickle.load(open("model/model.pkl", "rb"))
+model = pickle.load(open("model.pkl", "rb"))
 
 st.title("🏠 House Price Prediction App")
 
@@ -21,4 +21,5 @@ location_score = st.number_input("Location Score (1-10)")
 if st.button("Predict Price"):
     features = np.array([[area, bedrooms, bathrooms, floors, age, garage, location_score]])
     prediction = model.predict(features)
+
     st.success(f"Predicted House Price: ₹ {prediction[0]:,.2f}")
